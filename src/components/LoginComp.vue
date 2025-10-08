@@ -84,7 +84,7 @@
                 this.registerSuccess = false;
 
                 try {
-                    const res = await axios.post('http://localhost:3030/api/auth/login', {
+                    const res = await axios.post('https://hr-management-project-backend.onrender.com/api/auth/login', {
                         username: this.enteredUser,
                         password: this.enteredPwd
                     });
@@ -178,7 +178,7 @@
                 }
 
                 try {
-                    const res = await axios.post('http://localhost:3030/api/auth/register', {
+                    const res = await axios.post('https://hr-management-project-backend.onrender.com/api/auth/register', {
                         emp_id: this.regID,
                         username: this.regUser,
                         password: this.regPwd

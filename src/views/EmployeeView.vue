@@ -479,7 +479,7 @@ export default {
   this.isLoading = true;
   try {
     
-    const response = await axios.get(`http://localhost:3030/Employees/employee-modal-data/${employee.emp_id}`);
+    const response = await axios.get(`https://hr-management-project-backend.onrender.com/Employees/employee-modal-data/${employee.emp_id}`);
     this.modalEmployeeData = response.data;
     this.showModal = true;
   } catch (error) {

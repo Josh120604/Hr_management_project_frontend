@@ -130,7 +130,7 @@ export default createStore({
   actions: {
     // allow asyncrones process so its used to fetch data
     async getAttendance({commit}){
-      try {let data = await axios.get('http://localhost:3030/attendance')
+      try {let data = await axios.get('https://hr-management-project-backend.onrender.com/attendance')
         commit('SetAttendance',data.data.Attendance)
       }catch(e){
         console.error("error fetching attendance:", e);
@@ -138,7 +138,7 @@ export default createStore({
     },
     async getAttendanceByDate({ commit }, date = null){
       try {
-        let url = 'http://localhost:3030/attendancedate'; 
+        let url = 'https://hr-management-project-backend.onrender.com/attendancedate'; 
 
         if (date) {
           url += `?date=${date}`; 
@@ -154,7 +154,7 @@ export default createStore({
     },
     async getLeaveRecords({ commit }){
       try {
-        let response = await axios.get('http://localhost:3030/leave'); 
+        let response = await axios.get('https://hr-management-project-backend.onrender.com/leave'); 
         commit('SetLeaveRecords', response.data.data);
       } catch(e){
         console.error("Error fetching all leave records:", e);
@@ -165,7 +165,7 @@ export default createStore({
     // NEW ACTIONS: Fetch specific leave statuses
     async getPendingLeaveStats({ commit }){
       try {
-        let response = await axios.get('http://localhost:3030/leave/pending');
+        let response = await axios.get('https://hr-management-project-backend.onrender.com/leave/pending');
         commit('SetPendingLeaveStats', response.data.data);
       } catch(e){
         console.error("Error fetching pending leave stats:", e);
@@ -189,7 +189,7 @@ export default createStore({
     // Action to update Leave Status
     async updateLeaveStatus({ commit, dispatch }, { leave_id, new_status }) {
       try {
-        const response = await axios.put('http://localhost:3030/leave/update', {
+        const response = await axios.put('https://hr-management-project-backend.onrender.com/leave/update', {
           leave_id,
           new_status
         });
@@ -211,7 +211,7 @@ export default createStore({
     },
     async getAllSalaries({commit}) {
       try {
-        let response = await axios.get('http://localhost:3030/api/salaries');
+        let response = await axios.get('https://hr-management-project-backend.onrender.com/api/salaries');
         commit('setSalaries',response.data);
       } catch (e) {
         console.error("Error fetching salaries:", e);
@@ -219,7 +219,7 @@ export default createStore({
     },
     async deleteSalary({ commit }, { emp_id, effective_date }) {
       try {
-        await axios.delete(`http://localhost:3030/api/salaries/${emp_id}/${effective_date}`);
+        await axios.delete(`https://hr-management-project-backend.onrender.com/api/salaries/${emp_id}/${effective_date}`);
         console.log(`Successfully sent delete request for ${emp_id} on ${effective_date}`);
       } catch (error) {
         console.error("Error deleting salary record:", error);
@@ -228,7 +228,7 @@ export default createStore({
     },
     async getAllReviewsWithAllDetails({commit}) {
       try {
-        let response = await axios.get('http://localhost:3030/api/reviews');
+        let response = await axios.get('https://hr-management-project-backend.onrender.com/api/reviews');
         console.log("API Response Data for Reviews:", response.data);
         commit('setReviews',response.data);
       } catch (e) {
@@ -237,7 +237,7 @@ export default createStore({
     },
     async addReview({ commit }, review) {
       try {
-        const response = await axios.post('http://localhost:3030/api/reviews', review);
+        const response = await axios.post('https://hr-management-project-backend.onrender.com/api/reviews', review);
         console.log("Review added successfully via API:", response.data);
       } catch (error) {
         console.error("Error adding review:", error.response ? error.response.data : error.message);
@@ -246,7 +246,7 @@ export default createStore({
     },
     async deleteReview({ commit }, { review_id }) {
       try {
-        await axios.delete(`http://localhost:3030/api/reviews/${review_id}`);
+        await axios.delete(`https://hr-management-project-backend.onrender.com/api/reviews/${review_id}`);
         console.log(`Successfully sent delete request for ${review_id}`);
       } catch (error) {
         console.error("Error deleting review:", error);
@@ -256,7 +256,7 @@ export default createStore({
     async updateReview({ commit }, reviewData) {
       try {
         const review_id = reviewData.review_id;
-        const response = await axios.put(`http://localhost:3030/api/reviews/${review_id}`, reviewData);
+        const response = await axios.put(`https://hr-management-project-backend.onrender.com/api/reviews/${review_id}`, reviewData);
         console.log(`Successfully sent update request for ${review_id}`, response.data);
       } catch (error) {
         console.error("Error updating review:", error);
@@ -265,7 +265,7 @@ export default createStore({
     },
     async getReviewById({ commit }, review_id) {
       try {
-        const response = await axios.get(`http://localhost:3030/api/reviews/${review_id}`);
+        const response = await axios.get(`https://hr-management-project-backend.onrender.com/api/reviews/${review_id}`);
         console.log("Fetched single review details:", response.data);
         return response.data;
       } catch (error) {
@@ -275,7 +275,7 @@ export default createStore({
     },
     async getEmp({ commit }) {
   try {
-    let { data } = await axios.get('http://localhost:3030/Employees')
+    let { data } = await axios.get('https://hr-management-project-backend.onrender.com/Employees')
     commit('setUsers', data) 
   } catch (error) {
     console.error("Error fetching employees:", error)
@@ -284,7 +284,7 @@ export default createStore({
 },
   async addEmp({ commit }, employeeData) {
     try {
-      const response = await axios.post('http://localhost:3030/Employees', {
+      const response = await axios.post('https://hr-management-project-backend.onrender.com/Employees', {
         emp_id: employeeData.emp_id,
         name: employeeData.name,
         department_id: employeeData.department_id || null,
@@ -300,7 +300,7 @@ export default createStore({
   },
     async deleteEmp({ commit }, emp_id) {
       try {
-        await axios.delete(`http://localhost:3030/Employees/${emp_id}`)
+        await axios.delete(`https://hr-management-project-backend.onrender.com/Employees/${emp_id}`)
         commit('deleteEmployee', emp_id)
         return { success: true }
       } catch (error) {
@@ -310,7 +310,7 @@ export default createStore({
     },
  async updateEmp({ commit }, { emp_id, name, department_id, position, reviewer_emp_id }) {
   try {
-    const response = await axios.put(`http://localhost:3030/Employees/${emp_id}`, {
+    const response = await axios.put(`https://hr-management-project-backend.onrender.com/Employees/${emp_id}`, {
       name,
       department_id,
       position,

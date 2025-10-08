@@ -212,7 +212,7 @@ export default {
         },
         async addPayrollEntry() {
             try {
-                const salaryResponse = await axios.post('http://localhost:3030/api/salaries', {
+                const salaryResponse = await axios.post('https://hr-management-project-backend.onrender.com/api/salaries', {
                     emp_id: this.newPayrollEntry.emp_id,
                     department_id: this.newPayrollEntry.department_id,
                     hours_worked: this.newPayrollEntry.hours_worked,
@@ -227,7 +227,7 @@ export default {
                 if (this.isNewEmployee) {
                     const { emp_id, bank_name, bank_account_number, tax_code} = this.newPayrollEntry;
 
-                    const bankResponse = await axios.post('http://localhost:3030/api/bankinfo', {
+                    const bankResponse = await axios.post('https://hr-management-project-backend.onrender.com/api/bankinfo', {
                         emp_id,
                         bank_name,
                         bank_account_number
@@ -237,7 +237,7 @@ export default {
                     }
                     console.log('Bank information added successfully!');
 
-                    const taxResponse = await axios.post('http://localhost:3030/api/taxinfo', {
+                    const taxResponse = await axios.post('https://hr-management-project-backend.onrender.com/api/taxinfo', {
                         emp_id,
                         tax_code
                     });

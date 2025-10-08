@@ -124,9 +124,9 @@ export default {
         async loadPayslipData(emp_id, effective_date) {
             try {
             const [salaryRes, bankRes, taxRes] = await Promise.all([
-                axios.get(`http://localhost:3030/api/salaries/${emp_id}/${effective_date}`),
-                axios.get(`http://localhost:3030/api/bankinfo/${emp_id}`),
-                axios.get(`http://localhost:3030/api/taxinfo/${emp_id}`)
+                axios.get(`https://hr-management-project-backend.onrender.com/api/salaries/${emp_id}/${effective_date}`),
+                axios.get(`https://hr-management-project-backend.onrender.com/api/bankinfo/${emp_id}`),
+                axios.get(`https://hr-management-project-backend.onrender.com/api/taxinfo/${emp_id}`)
             ]);
 
             this.salary = salaryRes.data;
