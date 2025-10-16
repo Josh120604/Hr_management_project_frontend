@@ -335,6 +335,7 @@
     .cont-button {
         display: flex;
         justify-content: center;
+        margin-top:-30px;
     }
     .signIn-button {
         border-radius: 15px;
