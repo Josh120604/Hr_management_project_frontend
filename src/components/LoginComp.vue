@@ -2,7 +2,7 @@
     <div class="signInScreen">
         <div class="signIn">
             <div class="signIn-header">
-                <h3>ModernTech Solutions</h3> <br> <hr>
+                <h3>ModernTech Solutions</h3><hr>
                  <p style="margin-bottom:-30px;"> <b>Demo Login details</b></p>
                   <p> Username : joshua    <br> Password : Password123</p>
                 <div class="toggle-buttons">
