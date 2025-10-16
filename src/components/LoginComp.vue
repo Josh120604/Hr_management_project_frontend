@@ -3,7 +3,7 @@
         <div class="signIn">
             <div class="signIn-header">
                 <h3>ModernTech Solutions</h3> <br> <hr> <br>
-                 <p> Demo Login details</p><br>
+                 <p> Demo Login details</p>
                   <p> USERNAME : joshua     Password : Password123</p>
                 <div class="toggle-buttons">
                     <button class="h-50 w-25" @click="isSignIn = true" :class="{ 'active-toggle': isSignIn}">Sign In</button>
